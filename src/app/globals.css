@@ -23,6 +23,32 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Mobile-first responsive typography */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+  
+  body {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+/* Touch-friendly tap targets for mobile */
+@media (max-width: 768px) {
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
 /* NEON GLOW EFFECTS */
 @keyframes neon-glow {
   0%, 100% {
@@ -199,4 +225,26 @@ html {
 .flip-in {
   animation: flip-in 0.6s ease-in-out forwards;
 }
+
+/* Mobile-specific optimizations */
+@media (max-width: 640px) {
+  /* Reduce animation complexity on mobile for better performance */
+  @media (prefers-reduced-motion: no-preference) {
+    * {
+      scroll-behavior: smooth;
+    }
+  }
+  
+  /* Adjust padding for smaller screens */
+  section {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  /* Better spacing for mobile cards */
+  .glass {
+    backdrop-filter: blur(8px);
+  }
+}
+
 

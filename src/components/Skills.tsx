@@ -25,24 +25,24 @@ export default function Skills({ techTools }: SkillsProps) {
     return (
         <section
             id="skills"
-            className="relative py-24 px-6 bg-gradient-to-b from-blue-950/30 via-purple-950/30 to-slate-950/30 border-y border-blue-500/20"
+            className="relative py-16 sm:py-24 px-3 sm:px-6 bg-gradient-to-b from-blue-950/30 via-purple-950/30 to-slate-950/30 border-y border-blue-500/20"
         >
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
-                <div className="mb-16">
-                    <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
+                <div className="mb-12 sm:mb-16">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
                         Technologies & Tools
                     </h2>
-                    <p className="text-slate-400 text-lg">
+                    <p className="text-slate-400 text-sm sm:text-lg">
                         Expertise across DevOps, Cloud, and Infrastructure Automation
                     </p>
                 </div>
 
                 {/* Toggle */}
-                <div className="flex justify-center gap-4 mb-12">
+                <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 mb-8 sm:mb-12">
                     <button
                         onClick={() => setShowTechCategory(true)}
-                        className={`px-6 py-3 rounded-lg font-semibold transition-all ${showTechCategory
+                        className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all text-sm sm:text-base ${showTechCategory
                                 ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white"
                                 : "border border-blue-500/30 text-slate-300"
                             }`}
@@ -52,7 +52,7 @@ export default function Skills({ techTools }: SkillsProps) {
 
                     <button
                         onClick={() => setShowTechCategory(false)}
-                        className={`px-6 py-3 rounded-lg font-semibold transition-all ${!showTechCategory
+                        className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all text-sm sm:text-base ${!showTechCategory
                                 ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white"
                                 : "border border-blue-500/30 text-slate-300"
                             }`}
@@ -64,14 +64,14 @@ export default function Skills({ techTools }: SkillsProps) {
 
                 {/* ALL TECHNOLOGIES */}
                 {!showTechCategory && (
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-5">
                         {techTools.map((tool, idx) => (
                             <div
                                 key={idx}
-                                className="group rounded-xl p-5 bg-blue-950/40 border border-blue-500/20 text-center hover:scale-105 transition"
+                                className="group rounded-lg sm:rounded-xl p-3 sm:p-5 bg-blue-950/40 border border-blue-500/20 text-center hover:scale-105 transition"
                             >
-                                <tool.icon className="mx-auto mb-3 h-9 w-9 text-blue-400 group-hover:text-purple-400 transition" />
-                                <p className="font-semibold text-sm text-white">{tool.name}</p>
+                                <tool.icon className="mx-auto mb-2 sm:mb-3 h-6 sm:h-9 w-6 sm:w-9 text-blue-400 group-hover:text-purple-400 transition" />
+                                <p className="font-semibold text-xs sm:text-sm text-white line-clamp-2">{tool.name}</p>
                             </div>
                         ))}
                     </div>
@@ -79,22 +79,22 @@ export default function Skills({ techTools }: SkillsProps) {
 
                 {/* BY CATEGORY */}
                 {showTechCategory && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
                         {categories.map((category) => (
                             <div
                                 key={category}
-                                className="rounded-xl border border-blue-500/20 bg-blue-950/30 p-4"
+                                className="rounded-lg sm:rounded-xl border border-blue-500/20 bg-blue-950/30 p-3 sm:p-4"
                             >
                                 {/* Category header */}
                                 <div className="mb-3 flex items-center gap-2">
-                                    <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400" />
-                                    <h3 className="text-sm font-semibold text-blue-300">
+                                    <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 flex-shrink-0" />
+                                    <h3 className="text-xs sm:text-sm font-semibold text-blue-300">
                                         {category}
                                     </h3>
                                 </div>
 
                                 {/* Tools grid – compact */}
-                                <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
+                                <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3">
                                     {techTools
                                         .filter((tool) => tool.category === category)
                                         .map((tool, idx) => (
@@ -102,8 +102,8 @@ export default function Skills({ techTools }: SkillsProps) {
                                                 key={idx}
                                                 className="group flex flex-col items-center justify-center rounded-md p-2 bg-slate-900/40 border border-slate-700/30 hover:border-blue-400/50 transition"
                                             >
-                                                <tool.icon className="h-5 w-5 text-slate-300 group-hover:text-blue-400 transition" />
-                                                <span className="mt-0.5 text-[11px] text-slate-300 text-center leading-tight">
+                                                <tool.icon className="h-4 sm:h-5 w-4 sm:w-5 text-slate-300 group-hover:text-blue-400 transition" />
+                                                <span className="mt-0.5 text-[10px] sm:text-[11px] text-slate-300 text-center leading-tight line-clamp-1">
                                                     {tool.name}
                                                 </span>
                                             </div>
