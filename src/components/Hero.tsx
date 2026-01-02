@@ -10,7 +10,7 @@ interface HeroProps {
 
 export default function Hero({ visibleLogs, showHero }: HeroProps) {
     return (
-        <section className="relative lg:min-h-screen flex flex-col items-center pt-8 sm:pt-12 lg:pt-20 px-3 sm:px-6 pb-6 sm:pb-8 lg:pb-16">
+        <section className="relative flex flex-col items-center pt-8 sm:pt-12 lg:pt-20 px-3 sm:px-6 pb-6 sm:pb-8 lg:pb-12">
             <div className="max-w-4xl w-full">
                 {!showHero ? (
                     <div className="glass border-green-500/40 rounded-lg p-4 sm:p-8 animate-fade-in">
