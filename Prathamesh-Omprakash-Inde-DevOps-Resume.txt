@@ -1,0 +1,271 @@
+Prathamesh Omprakash Inde
+Mumbai, India
+
+prathameshinde86@gmail.com
+
++91 7057238682
+
+LinkedIn
+
+PROFESSIONAL SUMMARY
+Cloud Platform & DevOps Engineer with 3+ years of experience building scalable CI/CD automation
+pipelines, optimizing cloud-native infrastructure across AWS, GCP, and Azure, and improving developer
+experience through automation and self-service tooling. Skilled in Kubernetes, Docker, Terraform, Jenkins,
+GitHub Actions, and GitLab CI/CD. Adept at implementing reliable software delivery workflows,
+monitoring, and infrastructure-as-code in distributed enterprise environments.Certified across multiple
+cloud platforms with a strong foundation in security, observability, and automation engineering.
+
+WORK EXPERIENCE
+Framework Engineer - Platform
+Quantiphi
+Designed and implemented scalable CI/CD pipelines using GitHub Actions and
+GitLab CI, delivering zero-downtime deployments and reducing release cycle
+times by 40%.
+Automated multi-cloud infrastructure provisioning using Terraform,
+Kubernetes, and reusable IaC modules, reducing manual operational effort and
+improving developer efficiency.
+Built and optimized containerized microservices using Docker, Helm,
+Kustomize, and Skaffold, ensuring consistent and repeatable deployments across
+development, staging, and production environments.
+Developed, deployed, and optimized workloads on GKE (Google Kubernetes
+Engine) for Insmed’s GCP platform, including autoscaling, secure namespace
+isolation, service mesh integration, and microservice routing.
+Configured and managed GKE Services, Ingress controllers, internal/external load
+balancing, and traffic-routing rules to support scalable and reliable application
+delivery.
+Implemented comprehensive observability and monitoring using Prometheus,
+Grafana, Cloud Monitoring, and Cloud Logging, enabling proactive incident
+response and improving system reliability and MTTR.
+Improved local-to-cluster development workflows with Skaffold, enabling
+automated build–test–deploy cycles and shortening development feedback loops.
+Collaborated with cross-functional engineering teams to standardize IaC
+templates, improving environment consistency, auditability, and deployment
+governance.
+Led cloud automation and modernization initiatives across GCP (Insmed, Bayer
+Calantic) and AWS (PointClickCare) using Cloud Functions, AWS Lambda, API
+Gateway, and Cognito to build secure, event-driven architectures.
+Strengthened platform security by integrating SonarQube, performing Nessus
+vulnerability scans, and implementing role-based IAM with least-privilege access
+across cloud resources.
+
+01/2024 – present
+Mumbai, India
+
+Platform Engineer Intern
+Quantiphi
+Supported CI/CD workflow enhancements for cloud deployments across AWS and
+GCP, optimizing build pipelines and container lifecycle management.
+Built internal automation scripts using Python and Node.js, streamlining
+infrastructure validation and service monitoring.
+
+03/2023 – 12/2023
+
+Software Engineer Intern
+Advaa Health
+Developed modern front-end web applications using Angular, TypeScript, and
+RESTful APIs, improving performance and user experience.
+Integrated automated testing (Jasmine/Karma) and CI/CD workflows for frontend
+releases, improving quality and reducing regression defects.
+
+03/2022 – 03/2023
+
+Software Developer Intern
+Cancard Inc.
+Deployed serverless architectures with AWS Lambda, API Gateway, and
+DynamoDB for high-availability e-commerce systems.
+
+03/2022 – 03/2023
+
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+Automated infrastructure scaling and monitoring with CloudWatch, VPC
+configurations, and Auto Scaling Groups for production-grade reliability.
+•
+
+UI/UX Designer & Front-End Developer
+Ambitech Healthcare
+Worked on front-end design and development using HTML, CSS, JavaScript, and
+Bootstrap for the Admin Panel Dashboard.
+Designed user interfaces for Android applications using Figma.
+
+09/2021 – 03/2022
+
+•
+
+•
+
+EDUCATION
+Bachelor of Engineering
+Pimpri Chinchwad College of Engineering
+Grade:8.99
+
+2019 – 2023
+Pune, India
+
+PROJECTS
+Cloud-Resource-Logger: AWS Resource Management CLI Tool
+A Command-Line Interface (CLI) for efficient listing and management of AWS resources.
+Developed Cloud-Resource-Logger, a Node.js-based CLI tool for managing and listing AWS resources such
+as EC2 instances, S3 buckets, Lambda functions, DynamoDB tables, IAM users, RDS instances, ECS
+clusters, and EKS clusters.
+The tool facilitates interaction with AWS by securely prompting for credentials and displaying detailed
+information on various services. Key features include easy setup, clean environment management
+(start/stop commands), and comprehensive resource listing via modularized AWS service logic using the
+AWS SDK (v3).
+The CLI is ideal for developers and cloud engineers seeking streamlined AWS resource management.
+•
+
+•
+
+•
+
+Admin Portal
+Admin Portal Designed In Angular
+Developed a dynamic admin portal for an eStore using Angular with routing capabilities, delivering a
+comprehensive frontend solution for managing store operations.Implemented Angular Material to build a
+modern, responsive, and user-friendly UI, significantly enhancing the overall user experience.
+Integrated a charts library (e.g., Chart.js or ngx-charts) to enable data visualization and support datadriven decision-making for sales, inventory, and customer insights.
+Hosted the application on AWS by deploying static files to an S3 bucket and configuring a custom DNS
+using Route 53 for global accessibility.
+AWS Lambda for serverless backend logic and Amazon API Gateway to expose RESTful APIs, enabling
+secure, scalable, and cost-efficient communication between the frontend and backend services.
+•
+
+•
+
+•
+
+•
+
+Portfolio Website
+Personal Portfolio website
+Designed and developed a personal portfolio website from scratch using HTML, CSS, JavaScript, and
+Bootstrap to showcase professional skills and projects.
+Employed responsive web design principles to ensure optimal viewing and usability across various devices
+and screen sizes.
+Customized interactive elements and animations with JavaScript to create an engaging and user-friendly
+browsing experience.
+•
+
+•
+
+•
+
+CERTIFICATES
+Snowflake SnowPro Core
+Certification
+Issue Date: 18 June 2024
+Expiration Date: 18 June 2026
+
+AWS Certified Cloud
+Practitioner
+Issue Date: 17 Nov 2024
+Expiration Date: 17 Nov 2027
+
+Google Cloud Certified Associate
+Cloud Engineer
+Issue Date: 19 May 2023
+Expiration Date: 19 May 2026
+
+Oracle Cloud Infrastructure
+2023 Certified Foundations
+Associate
+Issue Date: 12 Nov 2023
+Expiration Date: 12 Nov 2025
+
+Oracle Cloud Infrastructure
+2023 AI Certified Foundations
+Associate
+Issue Date: 12 Nov 2023
+Expiration Date: 12 Nov 2025
+
+Microsoft Certified: Azure
+Fundamentals
+Issue Date: 11 Sep 2024
+
+GitHub Foundations
+Issue Date: 18 Sep 2024
+Expiration Date: 18 Sep 2027
+
+TECHNICAL SKILLS
+CI/CD & DevOps Tools: Jenkins, GitLab CI/CD, GitHub Actions, Skaffold, ArgoCD, Terraform, Helm,
+Kustomize
+Containers & Orchestration: Docker, Kubernetes, GKE, EKS, Autopilot
+Programming & Scripting: JavaScript (ES6+), TypeScript, Python, Go, Bash
+Frontend Technologies: React, Next.js, Angular, HTML5, CSS3, Webpack, Vite, NPM
+Cloud Platforms: AWS (Lambda, EC2, S3, CloudFront, IAM), GCP (App Engine, Pub/Sub, Cloud Run), Azure
+Monitoring & Observability: Prometheus, Grafana, Cloud Logging, Stackdriver
+Testing Tools: Mocha, Vitest, Jest, Jasmine, Karma
+Version Control: Git, GitHub, GitLab, Bitbucket (advanced branching workflows)
+Configuration Management: Ansible, Puppet (basic)
+Security & Compliance: IAM, SonarQube, Nessus, Snyk
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+•
+
+PUBLICATIONS
+A Block-Chain Based Approach for Food Supply Chain Management
+IEEE
+This review paper examines many elements of food supply chain management and
+how blockchain may be used in supply chain management.
+
+ACTIVITIES
+Recieved Quantiphi Galantic- Consider it done award for H1 2025.
+Received a $100 grant from La Trobe University for a blockchain project.
+Copyright on Online Food Delivery and comparison website.
+Published Conference paper in ICCCNT IEEE Conference.
+•
+
+•
+
+•
+
+•
+
+26/12/2022
+
+
