@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Skills from "@/components/Skills";
@@ -68,7 +68,7 @@ const bootLogs = [
   "$ loading observability stack...",
   "✔ prometheus | grafana | loki | datadog",
   "$ verifying ci/cd pipelines...",
-  "✔ github-actions | argocd | terraform | jenkins",
+  "✔ github-actions | terraform",
   "$ scanning infrastructure...",
   "✔ all 150+ resources healthy",
   "$ running security compliance...",
@@ -85,7 +85,7 @@ const projectsData = [
     technologies: ["Node.js", "AWS SDK v3", "AWS CLI", "EC2", "S3", "Lambda"],
     highlights: ["Multi-service management", "AWS automation", "Resource tracking"],
     github: "https://github.com/imInde09/Cloud-Resource-Logger",
-    live: "https://npmjs.com/package/cloud-resource-logger" 
+    live: "https://npmjs.com/package/cloud-resource-logger"
   },
   {
     title: "Admin Portal",
@@ -215,40 +215,153 @@ const experiences = [
 export default function Home() {
   const [visibleLogs, setVisibleLogs] = useState<string[]>([]);
   const [showHero, setShowHero] = useState(false);
+  const [isBooting, setIsBooting] = useState(true);
+  const [hasMounted, setHasMounted] = useState(false);
+  const [audioEnabled, setAudioEnabled] = useState(false);
 
+  const typingAudioRef = useRef<HTMLAudioElement | null>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  /* --------------------------------------------------
+   * UNLOCK AUDIO ON FIRST USER INTERACTION
+   * -------------------------------------------------- */
   useEffect(() => {
+    const enableAudio = () => {
+      setAudioEnabled(true);
+      window.removeEventListener("click", enableAudio);
+      window.removeEventListener("keydown", enableAudio);
+    };
+
+    window.addEventListener("click", enableAudio);
+    window.addEventListener("keydown", enableAudio);
+
+    return () => {
+      window.removeEventListener("click", enableAudio);
+      window.removeEventListener("keydown", enableAudio);
+    };
+  }, []);
+
+  /* --------------------------------------------------
+   * INIT BOOT
+   * -------------------------------------------------- */
+  useEffect(() => {
+    setHasMounted(true);
+
+    // Lock scroll during boot
+    document.body.style.overflow = "hidden";
+    const seenBoot = localStorage.getItem("bootSeen");
+    // ✅ If already seen, skip boot completely
+    if (seenBoot === "true") {
+      setShowHero(true);
+      setIsBooting(false);
+      return;
+    }
+
+    // Prepare typing sound
+    typingAudioRef.current = new Audio("/sounds/typing.mp3");
+    typingAudioRef.current.volume = 0.25;
+    typingAudioRef.current.loop = false;
+
     let index = 0;
-    const interval = setInterval(() => {
+
+    intervalRef.current = setInterval(() => {
       setVisibleLogs((prev) => [...prev, bootLogs[index]]);
+
+      if (audioEnabled && typingAudioRef.current) {
+        typingAudioRef.current.currentTime = 0;
+        typingAudioRef.current.play().catch(() => { });
+      }
+
       index++;
 
       if (index === bootLogs.length) {
-        clearInterval(interval);
-        setTimeout(() => setShowHero(true), 600);
+        finishBoot();
       }
-    }, 100);
+    }, 120);
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => cleanup();
+  }, [audioEnabled]);
+
+  /* --------------------------------------------------
+   * FINISH BOOT
+   * -------------------------------------------------- */
+  const finishBoot = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+
+    localStorage.setItem("bootSeen", "true");
+
+    setTimeout(() => {
+      setShowHero(true);
+      setIsBooting(false);
+      document.body.style.overflow = "";
+    }, 600);
+  };
+
+  /* --------------------------------------------------
+   * SKIP BOOT
+   * -------------------------------------------------- */
+  const skipBoot = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    setVisibleLogs(bootLogs);
+    finishBoot();
+  };
+
+  /* --------------------------------------------------
+   * CLEANUP
+   * -------------------------------------------------- */
+  const cleanup = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    document.body.style.overflow = "";
+  };
+
+  /* --------------------------------------------------
+   * PREVENT INITIAL FLASH
+   * -------------------------------------------------- */
+  if (!hasMounted) return null;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white">
-      {/* ANIMATED GRID BACKGROUND */}
+      {/* BACKGROUND */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,136,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,136,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-600 rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse" />
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-cyan-600 rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-600 blur-3xl opacity-5 animate-pulse" />
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-cyan-600 blur-3xl opacity-5 animate-pulse" />
       </div>
 
-      <Header />
-      <Hero visibleLogs={visibleLogs} showHero={showHero} />
-      <Skills techTools={techTools} />
-      <Projects projectsData={projectsData} />
-      <Experience experiences={experiences} />
-       <Certifications certifications={certifications} />
-      <Contact />
-      <Footer />
+      {/* FULLSCREEN TERMINAL BOOT */}
+      {isBooting && (
+        <div className="fixed inset-0 z-50 bg-black flex flex-col">
+          {/* Terminal header */}
+          <div className="flex items-center justify-between px-6 py-3 border-b border-green-500/20 font-mono text-green-400 text-sm">
+            <span>root@prathamesh:~#</span>
+            <button
+              onClick={skipBoot}
+              className="px-4 py-1 border border-green-500/40 rounded hover:bg-green-500/10 transition"
+            >
+              Skip
+            </button>
+          </div>
+
+          {/* Terminal body */}
+          <div className="flex-1 flex items-center justify-center overflow-hidden">
+            <div className="w-full max-w-4xl px-6">
+              <Hero visibleLogs={visibleLogs} showHero={false} />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* MAIN SITE */}
+      <div className={showHero ? "pointer-events-auto" : "pointer-events-none"}>
+        <Header />
+        <Hero visibleLogs={visibleLogs} showHero={showHero} />
+        <Skills techTools={techTools} />
+        <Projects projectsData={projectsData} />
+        <Experience experiences={experiences} />
+        <Certifications certifications={certifications} />
+        <Contact />
+        <Footer />
+      </div>
     </div>
   );
 }
-
