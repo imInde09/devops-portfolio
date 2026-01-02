@@ -379,8 +379,8 @@ export default function Home() {
         <Skills techTools={techTools} />
         <Projects projectsData={projectsData} />
         <Experience experiences={experiences} />
-        <Recognitions recognitions={recognitions} />
         <Certifications certifications={certifications} />
+        <Recognitions recognitions={recognitions} />
         <Contact />
         <Footer />
       </div>
