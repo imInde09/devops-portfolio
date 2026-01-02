@@ -31,7 +31,7 @@ export default function Hero({ visibleLogs, showHero }: HeroProps) {
               {/* Profile Image */}
               <div className="flex-shrink-0">
                 <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden border-2 border-green-500/50 group hover:border-green-400 transition-all duration-300">
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-cyan-500/20 z-10 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-br z-10 pointer-events-none" />
                   <Image
                     src="/profile.jpg"
                     alt="Prathamesh Inde"
@@ -42,9 +42,6 @@ export default function Hero({ visibleLogs, showHero }: HeroProps) {
                     quality={95}
                   />
                 </div>
-                <p className="text-center mt-4 text-sm text-slate-400">
-                  💡 Your profile photo
-                </p>
               </div>
 
               {/* Text Content */}
@@ -64,7 +61,7 @@ export default function Hero({ visibleLogs, showHero }: HeroProps) {
 
                 <div className="flex flex-col sm:flex-row gap-4 pt-6">
                   <a
-                    href="#projects"
+                    href="#experience"
                     className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-cyan-500 text-slate-950 font-bold rounded-lg hover:shadow-lg hover:shadow-green-500/50 transition-all duration-300"
                   >
                     Explore My Work <ArrowRight className="w-5 h-5" />

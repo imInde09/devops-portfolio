@@ -9,6 +9,57 @@ import Certifications from "@/components/Certifications";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { IconType } from "react-icons";
+import {
+  SiKubernetes,
+  SiDocker,
+  SiTerraform,
+  SiGithubactions,
+  SiGitlab,
+  SiHelm,
+  SiSkaffold,
+  SiPrometheus,
+  SiGrafana,
+  SiAmazon,
+  SiGooglecloud,
+  SiJenkins,
+  SiSonarqube,
+  SiPython,
+  SiGnubash,
+  SiGit,
+  SiGithub,
+  SiSnyk,
+} from "react-icons/si";
+import { VscAzure } from "react-icons/vsc";
+
+interface TechTool {
+  name: string;
+  icon: IconType;
+  category: string;
+}
+
+const techTools: TechTool[] = [
+  { name: "Kubernetes", icon: SiKubernetes, category: "Orchestration" },
+  { name: "Docker", icon: SiDocker, category: "Containers" },
+  { name: "Terraform", icon: SiTerraform, category: "IaC" },
+  { name: "GitHub Actions", icon: SiGithubactions, category: "CI/CD" },
+  { name: "GitLab CI", icon: SiGitlab, category: "CI/CD" },
+  { name: "Helm", icon: SiHelm, category: "Orchestration" },
+  { name: "Skaffold", icon: SiSkaffold, category: "Development" },
+  { name: "Prometheus", icon: SiPrometheus, category: "Monitoring" },
+  { name: "Grafana", icon: SiGrafana, category: "Monitoring" },
+  { name: "AWS", icon: SiAmazon, category: "Cloud" },
+  { name: "GCP", icon: SiGooglecloud, category: "Cloud" },
+  { name: "Azure", icon: VscAzure, category: "Cloud" },
+  { name: "Jenkins", icon: SiJenkins, category: "CI/CD" },
+  { name: "Snyk", icon: SiSnyk, category: "Security" },
+  { name: "SonarQube", icon: SiSonarqube, category: "Security" },
+  { name: "Python", icon: SiPython, category: "Scripting" },
+  { name: "Bash", icon: SiGnubash, category: "Scripting" },
+  { name: "Git", icon: SiGit, category: "Version Control" },
+  { name: "GitHub", icon: SiGithub, category: "Version Control" },
+  { name: "GitLab", icon: SiGitlab, category: "Version Control" },
+];
 
 const bootLogs = [
   "$ initializing devops platform...",
@@ -26,57 +77,25 @@ const bootLogs = [
   "root@prathamesh:~# ",
 ];
 
-const techTools = [
-  { name: "Kubernetes", icon: "k8s", category: "Orchestration" },
-  { name: "Docker", icon: "docker", category: "Containers" },
-  { name: "Terraform", icon: "terraform", category: "IaC" },
-  { name: "GitHub Actions", icon: "github", category: "CI/CD" },
-  { name: "GitLab CI", icon: "gitlab", category: "CI/CD" },
-  { name: "Helm", icon: "helm", category: "Orchestration" },
-  { name: "Kustomize", icon: "kustomize", category: "Orchestration" },
-  { name: "Skaffold", icon: "skaffold", category: "Development" },
-  { name: "Prometheus", icon: "prometheus", category: "Monitoring" },
-  { name: "Grafana", icon: "grafana", category: "Monitoring" },
-  { name: "AWS", icon: "aws", category: "Cloud" },
-  { name: "GCP", icon: "gcp", category: "Cloud" },
-  { name: "Azure", icon: "azure", category: "Cloud" },
-  { name: "Jenkins", icon: "jenkins", category: "CI/CD" },
-  { name: "ArgoCD", icon: "argocd", category: "GitOps" },
-  { name: "Cloud Logging", icon: "logging", category: "Monitoring" },
-  { name: "SonarQube", icon: "sonarqube", category: "Security" },
-  { name: "Python", icon: "python", category: "Programming" },
-  { name: "Go", icon: "go", category: "Programming" },
-  { name: "Bash", icon: "bash", category: "Scripting" },
-];
-
 const projectsData = [
   {
     title: "Cloud-Resource-Logger",
     description:
       "AWS CLI tool for efficient cloud resource management. Built with Node.js and AWS SDK v3, enabling streamlined management of EC2, S3, Lambda, DynamoDB, IAM, RDS, ECS, and EKS resources across AWS infrastructure.",
-    impact: "CLI automation",
     technologies: ["Node.js", "AWS SDK v3", "AWS CLI", "EC2", "S3", "Lambda"],
     highlights: ["Multi-service management", "AWS automation", "Resource tracking"],
     github: "https://github.com/imInde09/Cloud-Resource-Logger",
+    live: "https://npmjs.com/package/cloud-resource-logger" 
   },
   {
     title: "Admin Portal",
     description:
       "eStore admin dashboard built with Angular and modern AWS services including S3, Route 53, Lambda, and API Gateway. Features comprehensive admin capabilities with responsive UI and Material Design components.",
-    impact: "Admin dashboard",
     technologies: ["Angular", "AWS S3", "Route 53", "Lambda", "API Gateway"],
     highlights: ["Material Design", "AWS integration", "Responsive UI"],
     github: "https://github.com/imInde09/Admin-Portal",
-  },
-  {
-    title: "Portfolio Website",
-    description:
-      "Personal portfolio website built with HTML, CSS, JavaScript, and Bootstrap. Showcases projects, skills, and professional experience with a modern responsive design.",
-    impact: "Web design",
-    technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-    highlights: ["Responsive design", "Modern UI", "Portfolio showcase"],
-    github: "https://github.com/imInde09/Portfolio-Website",
-  },
+    live: "https://admin-portal.prathameshinde.site/"
+  }
 ];
 
 const certifications = [
@@ -86,7 +105,7 @@ const certifications = [
     year: "2024",
     expiresIn: "2026",
     color: "from-blue-500 to-cyan-500",
-    url: "https://verify.snowflakeu.com",
+    url: "https://achieve.snowflake.com/9d9e6bb5-09c1-4a6e-8eb4-704c32cb4844",
   },
   {
     title: "AWS Certified Cloud Practitioner",
@@ -94,7 +113,7 @@ const certifications = [
     year: "2024",
     expiresIn: "2027",
     color: "from-orange-500 to-yellow-500",
-    url: "https://www.credly.com/badges/your-aws-badge-id",
+    url: "https://www.credly.com/badges/2394e3f8-aac2-4052-87e0-97a32761d600/public_url",
   },
   {
     title: "Google Cloud Certified Associate Cloud Engineer",
@@ -102,7 +121,7 @@ const certifications = [
     year: "2023",
     expiresIn: "2026",
     color: "from-red-500 to-orange-500",
-    url: "https://www.credential.net/your-google-cloud-badge",
+    url: "https://google.accredible.com/13f031af-b785-4224-bf86-0c7cccfd91c1?key=258dfc25da7a8b5c117f1e75c8892989ddc8cac9b8d635b0cd697a2fdb6497a5",
   },
   {
     title: "Oracle Cloud Infrastructure Certified Foundations Associate",
@@ -110,7 +129,7 @@ const certifications = [
     year: "2023",
     expiresIn: "2025",
     color: "from-red-600 to-red-500",
-    url: "https://www.credly.com/badges/your-oracle-badge-id",
+    url: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=E22C8AD1BAAA1C8F52DB691B64BEC43C8359B5F638AA852BF3DA3C80FAA7393F",
   },
   {
     title: "Oracle Cloud Infrastructure AI Certified Foundations Associate",
@@ -118,14 +137,14 @@ const certifications = [
     year: "2023",
     expiresIn: "2025",
     color: "from-yellow-500 to-orange-500",
-    url: "https://www.credly.com/badges/your-oracle-ai-badge-id",
+    url: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=17B223F1C7E0DFBF8048E42974ABCC5D547471B9AC74C350BF0E2E31E59C7769",
   },
   {
     title: "Microsoft Certified: Azure Fundamentals",
     issuer: "Microsoft",
     year: "2024",
     color: "from-blue-600 to-blue-400",
-    url: "https://learn.microsoft.com/en-us/users/prathameshomprakashinde-9834/credentials/b415794285445557",
+    url: "https://learn.microsoft.com/api/credentials/share/en-us/PrathameshInde-9413/C1BB57EDE2B5A404?sharingId=D722D9B34493F72F",
   },
   {
     title: "GitHub Foundations",
@@ -133,7 +152,7 @@ const certifications = [
     year: "2024",
     expiresIn: "2027",
     color: "from-gray-700 to-gray-900",
-    url: "https://www.credly.com/badges/your-github-badge-id",
+    url: "https://www.credly.com/badges/4c9abc5c-8718-4d51-bb18-3860b6606a31/linked_in_profile",
   },
 ];
 
@@ -196,7 +215,6 @@ const experiences = [
 export default function Home() {
   const [visibleLogs, setVisibleLogs] = useState<string[]>([]);
   const [showHero, setShowHero] = useState(false);
-  const [showTechCategory, setShowTechCategory] = useState(false);
 
   useEffect(() => {
     let index = 0;
@@ -224,10 +242,10 @@ export default function Home() {
 
       <Header />
       <Hero visibleLogs={visibleLogs} showHero={showHero} />
-      <Skills techTools={techTools} showTechCategory={showTechCategory} setShowTechCategory={setShowTechCategory} />
+      <Skills techTools={techTools} />
       <Projects projectsData={projectsData} />
-      <Certifications certifications={certifications} />
       <Experience experiences={experiences} />
+       <Certifications certifications={certifications} />
       <Contact />
       <Footer />
     </div>

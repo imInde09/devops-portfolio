@@ -15,10 +15,11 @@ interface ExperienceProps {
 
 export default function Experience({ experiences }: ExperienceProps) {
   return (
-    <section className="relative py-24 px-6 bg-gradient-to-b from-slate-950/30 to-blue-950/30 border-y border-blue-500/20">
-      <div className="max-w-4xl mx-auto">
+    <section id="experience" className="relative py-24 px-6 bg-gradient-to-b from-purple-950/30 to-blue-950/30 border-y border-blue-500/20">
+      <div className="max-w-7xl mx-auto">
         <div className="mb-16">
           <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Professional Journey</h2>
+            <p className="text-slate-400 text-lg">A glimpse into my career progression and key milestones</p>
         </div>
 
         <div className="space-y-8 relative">
