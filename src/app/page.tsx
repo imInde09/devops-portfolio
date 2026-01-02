@@ -93,7 +93,7 @@ const projectsData = [
       "eStore admin dashboard built with Angular and modern AWS services including S3, Route 53, Lambda, and API Gateway. Features comprehensive admin capabilities with responsive UI and Material Design components.",
     technologies: ["Angular", "AWS S3", "Route 53", "Lambda", "API Gateway"],
     highlights: ["Material Design", "AWS integration", "Responsive UI"],
-    github: "https://github.com/imInde09/Admin-Portal",
+    github: "https://github.com/imInde09/admin-portal-material-angular-design-template",
     live: "https://admin-portal.prathameshinde.site/"
   }
 ];
@@ -214,53 +214,54 @@ const experiences = [
 
 export default function Home() {
   const [visibleLogs, setVisibleLogs] = useState<string[]>([]);
-  const [showHero, setShowHero] = useState(false);
   const [isBooting, setIsBooting] = useState(true);
+  const [showHero, setShowHero] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
   const [audioEnabled, setAudioEnabled] = useState(false);
 
-  const typingAudioRef = useRef<HTMLAudioElement | null>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const typingAudioRef = useRef<HTMLAudioElement | null>(null);
 
-  /* --------------------------------------------------
-   * UNLOCK AUDIO ON FIRST USER INTERACTION
-   * -------------------------------------------------- */
+  /* ---------------- MOUNT FIX ---------------- */
   useEffect(() => {
-    const enableAudio = () => {
+    setHasMounted(true);
+  }, []);
+
+  /* ---------------- SCROLL LOCK (ONLY PLACE) ---------------- */
+  useEffect(() => {
+    document.body.style.overflow = isBooting ? "hidden" : "";
+  }, [isBooting]);
+
+  /* ---------------- AUDIO UNLOCK ---------------- */
+  useEffect(() => {
+    const unlockAudio = () => {
       setAudioEnabled(true);
-      window.removeEventListener("click", enableAudio);
-      window.removeEventListener("keydown", enableAudio);
+      window.removeEventListener("click", unlockAudio);
+      window.removeEventListener("keydown", unlockAudio);
     };
 
-    window.addEventListener("click", enableAudio);
-    window.addEventListener("keydown", enableAudio);
+    window.addEventListener("click", unlockAudio);
+    window.addEventListener("keydown", unlockAudio);
 
     return () => {
-      window.removeEventListener("click", enableAudio);
-      window.removeEventListener("keydown", enableAudio);
+      window.removeEventListener("click", unlockAudio);
+      window.removeEventListener("keydown", unlockAudio);
     };
   }, []);
 
-  /* --------------------------------------------------
-   * INIT BOOT
-   * -------------------------------------------------- */
+  /* ---------------- BOOT INIT (RUN ONCE) ---------------- */
   useEffect(() => {
-    setHasMounted(true);
+    if (!hasMounted) return;
 
-    // Lock scroll during boot
-    document.body.style.overflow = "hidden";
     const seenBoot = localStorage.getItem("bootSeen");
-    // ✅ If already seen, skip boot completely
     if (seenBoot === "true") {
       setShowHero(true);
       setIsBooting(false);
       return;
     }
 
-    // Prepare typing sound
     typingAudioRef.current = new Audio("/sounds/typing.mp3");
     typingAudioRef.current.volume = 0.25;
-    typingAudioRef.current.loop = false;
 
     let index = 0;
 
@@ -269,7 +270,7 @@ export default function Home() {
 
       if (audioEnabled && typingAudioRef.current) {
         typingAudioRef.current.currentTime = 0;
-        typingAudioRef.current.play().catch(() => { });
+        typingAudioRef.current.play().catch(() => {});
       }
 
       index++;
@@ -279,60 +280,42 @@ export default function Home() {
       }
     }, 120);
 
-    return () => cleanup();
-  }, [audioEnabled]);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [hasMounted, audioEnabled]);
 
-  /* --------------------------------------------------
-   * FINISH BOOT
-   * -------------------------------------------------- */
+  /* ---------------- FINISH BOOT ---------------- */
   const finishBoot = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
-
     localStorage.setItem("bootSeen", "true");
 
     setTimeout(() => {
-      setShowHero(true);
       setIsBooting(false);
-      document.body.style.overflow = "";
+      setShowHero(true);
     }, 600);
   };
 
-  /* --------------------------------------------------
-   * SKIP BOOT
-   * -------------------------------------------------- */
+  /* ---------------- SKIP BOOT ---------------- */
   const skipBoot = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     setVisibleLogs(bootLogs);
     finishBoot();
   };
 
-  /* --------------------------------------------------
-   * CLEANUP
-   * -------------------------------------------------- */
-  const cleanup = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    document.body.style.overflow = "";
-  };
-
-  /* --------------------------------------------------
-   * PREVENT INITIAL FLASH
-   * -------------------------------------------------- */
   if (!hasMounted) return null;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white">
       {/* BACKGROUND */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+      <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,136,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,136,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-600 blur-3xl opacity-5 animate-pulse" />
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-cyan-600 blur-3xl opacity-5 animate-pulse" />
       </div>
 
-      {/* FULLSCREEN TERMINAL BOOT */}
+      {/* BOOT OVERLAY */}
       {isBooting && (
-        <div className="fixed inset-0 z-50 bg-black flex flex-col">
-          {/* Terminal header */}
-          <div className="flex items-center justify-between px-6 py-3 border-b border-green-500/20 font-mono text-green-400 text-sm">
+        <div className="fixed inset-0 z-50 bg-black flex flex-col font-mono">
+          <div className="flex items-center justify-between px-6 py-3 border-b border-green-500/20 text-green-400 text-sm">
             <span>root@prathamesh:~#</span>
             <button
               onClick={skipBoot}
@@ -342,9 +325,8 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Terminal body */}
-          <div className="flex-1 flex items-center justify-center overflow-hidden">
-            <div className="w-full max-w-4xl px-6">
+          <div className="flex-1 flex items-center justify-center px-6">
+            <div className="w-full max-w-4xl">
               <Hero visibleLogs={visibleLogs} showHero={false} />
             </div>
           </div>
