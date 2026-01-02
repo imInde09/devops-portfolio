@@ -6,6 +6,7 @@ import Hero from "@/components/Hero";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Certifications from "@/components/Certifications";
+import Recognitions from "@/components/Recognitions";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -31,6 +32,7 @@ import {
   SiSnyk,
 } from "react-icons/si";
 import { VscAzure } from "react-icons/vsc";
+import { url } from "inspector";
 
 interface TechTool {
   name: string;
@@ -211,6 +213,43 @@ const experiences = [
     ],
   },
 ];
+const recognitions = [
+  {
+    title: "Unsung Hero – Consider It Done",
+    issuer: "Quantiphi",
+    date: "H1 2025",
+    icon: "/h1-consider-it-done.png",
+    description:
+      "Recognized for consistently delivering high-impact platform engineering work, driving automation initiatives, and supporting mission-critical DevOps workflows.",
+    color: "from-amber-400 to-orange-400",
+  },
+  {
+    title: "Galactic – Consider It Done Award",
+    issuer: "Quantiphi",
+    date: "H1 2025",
+    icon: "/q3-consider-it-done.png",
+    description:
+      "Awarded for exceptional ownership and delivery excellence in cloud platform initiatives across multiple enterprise projects.",
+    color: "from-yellow-400 to-amber-400",
+  },
+  {
+    title: "Blockchain Research Grant",
+    issuer: "La Trobe University",
+    date: "2022",
+    description:
+      "Received a $100 research grant for work on blockchain-based food supply chain management.",
+    color: "from-orange-400 to-red-400",
+  },
+  {
+    title: "IEEE Conference Publication",
+    issuer: "ICCCNT – IEEE",
+    date: "2022",
+    url: "https://ieeexplore.ieee.org/document/9984473",
+    description:
+      "Published a research paper titled 'A Block-Chain Based Approach for Food Supply Chain Management'.",
+    color: "from-amber-500 to-yellow-500",
+  },
+];
 
 export default function Home() {
   const [visibleLogs, setVisibleLogs] = useState<string[]>([]);
@@ -340,6 +379,7 @@ export default function Home() {
         <Skills techTools={techTools} />
         <Projects projectsData={projectsData} />
         <Experience experiences={experiences} />
+        <Recognitions recognitions={recognitions} />
         <Certifications certifications={certifications} />
         <Contact />
         <Footer />
