@@ -226,7 +226,7 @@ const recognitions = [
   {
     title: "Galactic – Consider It Done Award",
     issuer: "Quantiphi",
-    date: "H1 2025",
+    date: "Q3 2025",
     icon: "/q3-consider-it-done.png",
     description:
       "Awarded for exceptional ownership and delivery excellence in cloud platform initiatives across multiple enterprise projects.",
