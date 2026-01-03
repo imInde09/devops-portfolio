@@ -105,7 +105,7 @@ export default function Recognitions({ recognitions }: RecognitionsProps) {
                                  hover:bg-amber-500/10 hover:border-amber-400
                                  transition-all"
                     >
-                      View Certificate
+                      Visit Site
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   )}
